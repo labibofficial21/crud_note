@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>CRUD Notes</title>
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<h1>Simple CRUD Notes</h1>
+
+		<form method="post">
+			<label for="name">To do <input type="text" name="name" id="name" /> </label>
+			<br />
+			<label for="explain">Explaination<input type="text" name="explain" id="explain" /> </label>
+			<br />
+			<label for="data">Date <input type="date" name="date" id="date" /></label>
+			<br />
+
+			<button type="submit" id="submit">Save</button>
+		</form>
+
+		<label for="search"> Cari Note <input type="text" name="search" id="search" /> </label>
+
+		<p id="inputMsg"></p>
+		<p id="emptyMsg"></p>
+		<div id="showData"></div>
+
+		<script type="module" src="script.js"></script>
+	</body>
+</html>

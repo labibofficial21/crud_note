@@ -1,0 +1,5 @@
+algoritma membuat crud notes ini :
+siapkan frontend form input sederhana di index.html
+hubungkan ke js (js frontend)
+buat server nodejs
+buat fungsi crud u setiap tombol
