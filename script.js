@@ -14,6 +14,10 @@ function cleanForm() {
 	name.value = "";
 	explain.value = "";
 	date.value = "";
+
+	// reset status edit
+	editId = null;
+	submit.innerText = "Save";
 }
 
 // search notes
@@ -216,26 +220,33 @@ async function updateData(id) {
 
 	console.log("update data!");
 	// console.log(id);
-	let putData = await fetch(`http://localhost:3000/updateData/${id}`, {
-		method: "PUT",
-		headers: {
-			"Content-Type": "application/json",
-		},
-		body: JSON.stringify({
-			id: id,
-			todo: name.value,
-			explaination: explain.value,
-			date: date.value,
-		}),
-	});
 
-	let result = await putData.json();
-	console.log(result);
+	try {
+		let putData = await fetch(`http://localhost:3000/updateData/${id}`, {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				id: id,
+				todo: name.value,
+				explaination: explain.value,
+				date: date.value,
+			}),
+		});
 
-	getData();
-	cleanForm();
-	editId = null;
-	submit.innerText = "Save";
+		if (!putData.ok) {
+			throw new Error(`Gagal update status: ${putData.status}`);
+		}
+		let result = await putData.json();
+		console.log(result);
+
+		getData();
+		cleanForm();
+	} catch (error) {
+		console.error("Gagal update data: ", error);
+		inputMsg.innerText = "Gagal memperbarui data. Coba lagi!";
+	}
 }
 
 getData();
