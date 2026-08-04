@@ -5,6 +5,8 @@ let submit = document.getElementById("submit");
 let showData = document.getElementById("showData");
 let emptyMsg = document.getElementById("emptyMsg");
 let inputMsg = document.getElementById("inputMsg");
+let normal = document.getElementById("priority-normal");
+let urgent = document.getElementById("priority-urgent");
 let search = document.getElementById("search");
 let editId = null;
 let searchNotes = [];
@@ -92,6 +94,7 @@ function renderData(dataList) {
 					<p>Explain : ${item.explaination}</p>
 					<p>Date : ${item.date}</p>
 					<p>ID : ${item.id}</p>
+					<p>Priority : ${item.priority ? item.priority : "normal"}</p>
 					<button class="btn-delete" data-id="${item.id}">Hapus Data</button>
 					<button class="btn-update" data-id="${item.id}">Ubah Data</button>
 				</div>
@@ -113,7 +116,7 @@ async function getData() {
 		// console.log(result[0]);
 
 		searchNotes = result;
-		// console.log(searchNotes);
+		console.log(searchNotes);
 		renderData(searchNotes);
 	} catch (error) {
 		console.error(error);
@@ -139,6 +142,7 @@ async function saveData() {
 				todo: name.value,
 				explaination: explain.value,
 				date: date.value,
+				priority: normal.checked ? normal.value : urgent.value,
 			}),
 		});
 
