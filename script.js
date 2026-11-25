@@ -111,7 +111,7 @@ async function getData() {
 	try {
 		emptyMsg.innerText = "Sedang mengambil data";
 
-		let data = await fetch("http://localhost:3000/getData");
+		let data = await fetch("/getData");
 		let result = await data.json();
 		// console.log(result[0]);
 
@@ -133,7 +133,7 @@ async function saveData() {
 			return;
 		}
 
-		let data = await fetch("http://localhost:3000/saveData", {
+		let data = await fetch("/saveData", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -176,7 +176,7 @@ async function deleteData(id) {
 	try {
 		let hapusData = confirm("Yakin ini menghapus data ini?");
 		if (hapusData === true) {
-			let data = await fetch(`http://localhost:3000/deleteData/${id}`, {
+			let data = await fetch(`/deleteData/${id}`, {
 				method: "DELETE",
 			});
 
@@ -195,7 +195,7 @@ async function editData(id) {
 		console.log("ini edit data");
 		// console.log(id);
 
-		let getData = await fetch(`http://localhost:3000/getData/${id}`);
+		let getData = await fetch(`/getData/${id}`);
 
 		if (!getData.ok) {
 			throw new Error("data tidak ditemukan!");
@@ -226,7 +226,7 @@ async function updateData(id) {
 	// console.log(id);
 
 	try {
-		let putData = await fetch(`http://localhost:3000/updateData/${id}`, {
+		let putData = await fetch(`/updateData/${id}`, {
 			method: "PUT",
 			headers: {
 				"Content-Type": "application/json",
