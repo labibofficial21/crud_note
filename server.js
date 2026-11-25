@@ -18,6 +18,7 @@ const supabase = createClient(URL, key);
 app.use(cors());
 app.use(express.json());
 app.use(router);
+app.use(express.static("."));
 
 app.get("/", async (req, res) => {
 	console.log("test opening");
